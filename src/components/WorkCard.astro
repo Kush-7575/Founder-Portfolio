@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  href: string;
+  title: string;
+  tagline: string;
+  status?: string;
+  hero?: ImageMetadata;
+  heroPlaceholder?: boolean;
+  liveUrl?: string;
+  index: number;
+}
+
+const { href, title, tagline, status, hero, heroPlaceholder, liveUrl, index } = Astro.props;
+const indexLabel = String(index).padStart(2, '0');
+---
+
+<a href={href} class="group block">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end">
+    <div class="md:col-span-8 lg:col-span-9 order-2 md:order-1">
+      {hero ? (
+        <div class="overflow-hidden bg-[#EFEEEC] aspect-[4/3] md:aspect-[16/10]">
+          <Image
+            src={hero}
+            alt={`${title}: ${tagline}`}
+            widths={[640, 960, 1280, 1600, 2000]}
+            sizes="(min-width: 1024px) 75vw, 100vw"
+            quality={88}
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+          />
+        </div>
+      ) : (
+        <div class="aspect-[4/3] md:aspect-[16/10] bg-[#F2F1EE] border border-hairline flex flex-col items-start justify-end p-8 md:p-12">
+          <p class="eyebrow">Visuals coming</p>
+          <p class="display-2 mt-4 max-w-[18ch]">{title}</p>
+          {liveUrl && (
+            <p class="mt-6 text-muted text-[14px]">{liveUrl.replace(/^https?:\/\//, '')}</p>
+          )}
+        </div>
+      )}
+    </div>
+
+    <div class="md:col-span-4 lg:col-span-3 order-1 md:order-2 flex flex-col gap-3">
+      <span class="eyebrow">{indexLabel}</span>
+      <h3 class="display-3 group-hover:text-accent transition-colors duration-300">{title}</h3>
+      <p class="text-muted text-[15px] leading-snug">{tagline}</p>
+      {status && <p class="text-faint text-[13px] mt-1">{status}</p>}
+    </div>
+  </div>
+</a>

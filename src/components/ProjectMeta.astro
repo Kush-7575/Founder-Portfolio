@@ -1,0 +1,35 @@
+---
+interface Props {
+  status?: string;
+  role: string[];
+  scale?: string;
+  liveUrl?: string;
+}
+
+const { status, role, scale, liveUrl } = Astro.props;
+
+const rows = [
+  ...(status ? [{ label: 'Status', value: status }] : []),
+  { label: 'Role', value: role.join(' · ') },
+  ...(scale ? [{ label: 'Scale', value: scale }] : []),
+];
+---
+
+<dl class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-y-3 sm:gap-y-4 gap-x-6 border-t border-hairline pt-8">
+  {rows.map(row => (
+    <>
+      <dt class="meta-label pt-0.5">{row.label}</dt>
+      <dd class="text-ink text-[15px] leading-relaxed">{row.value}</dd>
+    </>
+  ))}
+  {liveUrl && (
+    <>
+      <dt class="meta-label pt-0.5">Live</dt>
+      <dd class="text-ink text-[15px]">
+        <a href={liveUrl} target="_blank" rel="noopener" class="underline-accent">
+          {liveUrl.replace(/^https?:\/\//, '')}
+        </a>
+      </dd>
+    </>
+  )}
+</dl>

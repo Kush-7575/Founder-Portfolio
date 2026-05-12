@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+
+  return entries.map((entry, idx) => {
+    const prevEntry = idx > 0 ? entries[idx - 1] : null;
+    const nextEntry = idx < entries.length - 1 ? entries[idx + 1] : null;
+
+    return {
+      params: { slug: entry.id },
+      props: {
+        entry,
+        prev: prevEntry
+          ? { slug: prevEntry.id, title: prevEntry.data.title }
+          : null,
+        next: nextEntry
+          ? { slug: nextEntry.id, title: nextEntry.data.title }
+          : null,
+      },
+    };
+  });
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+---
+
+<ProjectLayout
+  title={data.title}
+  tagline={data.tagline}
+  status={data.status}
+  role={data.role}
+  scale={data.scale}
+  liveUrl={data.liveUrl}
+  hero={data.hero}
+  heroPlaceholder={data.heroPlaceholder}
+  video={data.video}
+  videoPlaceholder={data.videoPlaceholder}
+  prev={prev}
+  next={next}
+>
+  <Content />
+</ProjectLayout>

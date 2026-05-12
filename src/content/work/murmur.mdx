@@ -1,0 +1,66 @@
+---
+title: "Murmur"
+tagline: "Voice-enabled smart ring"
+year: "2024 - 2025"
+status: "Prototype shipped · paused before production"
+role:
+  - "Co-founder"
+  - "Hardware"
+  - "Agent infrastructure"
+  - "User research"
+scale: "1,200+ waitlist · working prototype shipped to soft-launch users"
+hero: "../../assets/work/murmur-hero.png"
+video: "murmur-demo.mp4"
+order: 2
+---
+
+import ImageFigure from '../../components/ImageFigure.astro';
+import murmurSilhouette from '../../assets/work/murmur-silhouette.jpg';
+import murmurWorn from '../../assets/work/murmur-worn.png';
+import murmurPrototypes from '../../assets/work/murmur-prototypes.png';
+import murmurRingSpec from '../../assets/work/murmur-ring-spec.png';
+import murmurChargerSpec from '../../assets/work/murmur-charger-spec.png';
+import murmurArBundle from '../../assets/work/murmur-ar-bundle.png';
+import murmurApp from '../../assets/work/murmur-app.png';
+
+Voice-enabled smart ring for capture and action on the go. Titanium enclosure, squarish form, capacitive touch sensor, microphone. Integrated with Notion, Calendar, and Gmail. Working prototype, soft-launched, paused before production.
+
+**The thesis: an extended mind.** People lose their best thinking between meetings, in the car, mid-walk, the moments where notes apps and chatbots have too much friction to help. Murmur was designed as ambient infrastructure for that gap. Not a chatbot in a new form factor; a calm cognitive tool that earns its place by helping the wearer see their own thinking from the outside.
+
+**Design constraints: no screen, no notifications, no feed.** The ring should be invisible until summoned, worn alongside a wedding band, never the center of attention. The interface is gesture-triggered capture; the output is a structured artifact, not another inbox. Hardware as a doorway to intelligence, not the product itself.
+
+**Capture model.** Two extremes to avoid: continuous eavesdropping (creepy, drains battery, erodes trust) and the synchronous chatbot (defeats the purpose of having a physical device). Murmur sat between: user-directed, event-based capture, processed asynchronously, surfaced as structured output the wearer could review and route. Privacy-first by default, with as much on-device processing as the hardware allowed.
+
+**Industrial design.** Designed the outer case; ran the prototype iteration loop with 3D-printed builds. Squarish form chosen deliberately, to break out of the "wellness tracker" category and signal a different intent on the hand.
+
+**Agent infrastructure.** Built the voice AI agent harness from scratch; owned the agentic infrastructure and database. Planner / executor split, retrieval over personal context, structured output back into Notion / Calendar / Gmail without intermediate UI.
+
+**Sourcing.** Sourced ODMs at CES and in China; secured production samples. Partnered with a Belgian industrial design studio on the second-iteration enclosure.
+
+**User research.** Conducted 500+ user interviews with creative professionals, students, and on-the-go workers. The recurring thread: *"I know the answer is somewhere in what I already know, but I can't reach it."* The product was designed around that gap. Not as a memory store, but as a way to see one's own thinking with more vantage.
+
+**Context.** Built deliberately against the cycle of failed AI hardware: Humane, Rabbit, and the consumer-robotics graveyard before them (Anki, Jibo, Astro, Vector). The pattern across each failure was treating the device as the product. Murmur treated it as the doorway.
+
+<ImageFigure src={murmurSilhouette} alt="Black-and-white silhouette wearing the Murmur ring on a pointed finger" caption="Campaign: the ring as the only legible object on the hand" />
+
+<ImageFigure src={murmurWorn} alt="Murmur clipped to a denim belt, in-context wear shot" caption="In-context wear shot: clip carrier" />
+
+<ImageFigure src={murmurPrototypes} alt="3D-printed prototype iterations of the Murmur ring" caption="Prototype iteration: 3D-printed builds" />
+
+<ImageFigure src={murmurRingSpec} alt="Diagram of the Murmur ring's components and interactions" caption="Ring spec: components and interactions" />
+
+<ImageFigure src={murmurChargerSpec} alt="Diagram showing pogo pin and induction charging options for Murmur" caption="Charger spec: pogo pin / induction options" />
+
+<ImageFigure src={murmurApp} alt="Murmur companion app: capture feed, threaded mind view, integrations panel" caption="Companion app: capture feed, threaded mind view, and integrations with Notion, Calendar, Gmail, Slack, ChatGPT" />
+
+## AR glasses + ring: the extension
+
+The ring was the input device. The natural next step was a display surface. A way for the structured output to come back without ever pulling out a phone. Same calm-tech constraints: no notifications, no feed, no demand for attention. The ring became the silent controller on the hand; the lens became the contextual surface on the face.
+
+**Form.** Glasses worn as ordinary frames: bridge, temples, balance close to a normal optical pair. The ring kept its squarish geometry to stay legible as a controller rather than jewelry.
+
+**Surface.** Ambient HUD that fades in only when there's something worth surfacing: incoming messages, upcoming calls, calendar context, dictated quick replies. Nothing demanding attention; everything one ring-gesture away from being acknowledged or dismissed.
+
+**Reservations.** Productized as a Batch 01 reservable bundle: glasses paired with the ring as one purchase, framed as a deliberate alternative to the phone-in-hand default.
+
+<ImageFigure src={murmurArBundle} alt="AR glasses and Murmur ring with an ambient HUD overlay" caption="AR glasses + ring bundle: ambient HUD surface, ring as controller" />

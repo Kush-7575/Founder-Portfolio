@@ -1,0 +1,21 @@
+---
+interface Props {
+  filename: string;
+  caption?: string;
+}
+
+const { filename, caption = 'Product walkthrough' } = Astro.props;
+---
+
+<figure class="my-12 md:my-16">
+  <div class="aspect-video w-full bg-[#F2F1EE] border border-dashed border-hairline flex flex-col items-center justify-center text-center p-8">
+    <div class="w-14 h-14 rounded-full bg-bg border border-hairline flex items-center justify-center mb-5">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted ml-1">
+        <polygon points="6 4 20 12 6 20 6 4"></polygon>
+      </svg>
+    </div>
+    <p class="eyebrow">Video coming</p>
+    <p class="mt-2 text-[14px] text-muted font-mono">{filename}</p>
+    <p class="mt-1 text-[13px] text-faint">{caption}</p>
+  </div>
+</figure>

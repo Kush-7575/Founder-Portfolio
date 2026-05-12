@@ -1,0 +1,41 @@
+---
+title: "Zero"
+tagline: "Kid's desktop companion robot"
+year: "2025"
+status: "Working prototype · 72-hour sprint"
+role:
+  - "Co-founder, Fable Engineering"
+  - "Concept"
+  - "Industrial design"
+scale: "Sketch → lovable prototype in one long weekend"
+hero: "../../assets/work/zero-hero.jpg"
+order: 3
+---
+
+import ImageFigure from '../../components/ImageFigure.astro';
+import zeroCad from '../../assets/work/zero-cad.png';
+import zeroComponents from '../../assets/work/zero-components.jpg';
+import zeroDesk from '../../assets/work/zero-desk.jpg';
+
+A desktop companion robot for kids, a conversational homework helper with an expressive E-Ink face, voice, and on-device vision. Built end-to-end at Fable Engineering as a 72-hour sprint from sketch to working prototype.
+
+**What it does.** Converses naturally within parental time and mode controls. Watches via camera and adjusts behavior to proximity, gestures, and what it sees. Expresses emotion through E-Ink sprite animations: idle, happy, focused, thinking, sleepy.
+
+**Hardware.** Raspberry Pi 5 compute. 4.2" E-Ink display. Dual speakers with amplifier. Digital microphone. Camera. USB-C charging on an internal battery. Wi-Fi and Bluetooth. Two-piece printed shell with an internal rail structure for serviceability.
+
+<ImageFigure src={zeroCad} alt="Fusion 360 CAD model of Zero's two-piece shell" caption="Parametric CAD: printability and serviceability prioritized over part count" />
+
+**Approach.** Compressed the loop from idea to interaction.
+
+- Day 0: mood boards and creative seeding
+- Day 1: sketch → AI rendering → Fusion 360 CAD → overnight 3D print on Bambu X1C
+- Day 2: electronics assembly, firmware bring-up on Pi 5, first face and voice integration
+- Day 3: vision pipeline, conversation integration, shell finishing, expression tuning
+
+<ImageFigure src={zeroComponents} alt="Zero shell, E-Ink display, and Raspberry Pi 5 laid out on a workbench" caption="Day 2: known-good modules over custom PCBs for prototyping speed" />
+
+**Architecture.** Python services on the Pi run an event-driven state machine. Microphone feeds ASR; camera feeds a vision tagger; sensors and buttons publish onto a message bus that drives behaviors and the E-Ink face. Lightweight inference stays on-device; LLM and VLM calls go remote with guardrails.
+
+<ImageFigure src={zeroDesk} alt="Assembled Zero prototype on a desk, with development environment visible on the monitor behind" caption="Day 3: assembled, talking, watching, expressing" />
+
+**Result.** A fast, lovable proof, enough to validate that the core experience is viable and to identify which firmware blocks are worth productizing so future prototypes compress from one weekend to one evening.
