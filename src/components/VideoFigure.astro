@@ -1,0 +1,32 @@
+---
+interface Props {
+  src: string;
+  caption?: string;
+  size?: 'wide' | 'full';
+}
+
+const { src, caption, size = 'wide' } = Astro.props;
+
+const wrapperClass =
+  size === 'full' ? 'my-12 md:my-20 -mx-6 md:mx-0' : 'my-12 md:my-20';
+
+const fullSrc = src.startsWith('/') ? src : `/videos/${src}`;
+const videoSrc = `${fullSrc}#t=0.5`;
+---
+
+<figure class={wrapperClass}>
+  <div class="bg-black overflow-hidden flex justify-center">
+    <video
+      src={videoSrc}
+      controls
+      playsinline
+      preload="metadata"
+      class="block w-full h-auto"
+    ></video>
+  </div>
+  {caption && (
+    <figcaption class="mt-3 text-[13px] text-muted">
+      {caption}
+    </figcaption>
+  )}
+</figure>

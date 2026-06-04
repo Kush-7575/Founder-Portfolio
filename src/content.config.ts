@@ -20,4 +20,20 @@ const work = defineCollection({
     }),
 });
 
-export const collections = { work };
+const engineering = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/engineering' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      tagline: z.string(),
+      year: z.string(),
+      institution: z.string().optional(),
+      publication: z.string().optional(),
+      tech: z.array(z.string()).optional(),
+      hero: image().optional(),
+      summary: z.string(),
+      order: z.number(),
+    }),
+});
+
+export const collections = { work, engineering };

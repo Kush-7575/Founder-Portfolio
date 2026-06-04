@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  href: string;
+  title: string;
+  year?: string;
+  summary: string;
+  tags?: string[];
+  image?: ImageMetadata;
+}
+
+const { href, title, year, summary, tags, image } = Astro.props;
+---
+
+<a href={href} class="group block">
+  <article class="flex flex-col gap-6">
+    {image && (
+      <div class="overflow-hidden bg-[#EFEEEC] aspect-[4/3]">
+        <Image
+          src={image}
+          alt={title}
+          widths={[480, 720, 960, 1280]}
+          sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
+          quality={86}
+          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+        />
+      </div>
+    )}
+
+    <div class="flex flex-col gap-3">
+      <div class="flex items-baseline gap-3 flex-wrap">
+        <h3 class="text-[20px] md:text-[22px] font-medium tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">{title}</h3>
+        {year && <span class="text-faint text-[13px]">{year}</span>}
+      </div>
+
+      <p class="text-muted text-[14.5px] leading-relaxed max-w-[62ch]">{summary}</p>
+
+      {tags && tags.length > 0 && (
+        <ul class="flex flex-wrap gap-x-3 gap-y-2 mt-2">
+          {tags.map((t) => (
+            <li class="text-[12px] tracking-wide uppercase text-faint border border-hairline rounded-full px-3 py-1">
+              {t}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </article>
+</a>

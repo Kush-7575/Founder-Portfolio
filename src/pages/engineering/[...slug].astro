@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import EngineeringLayout from '../../layouts/EngineeringLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('engineering')).sort((a, b) => a.data.order - b.data.order);
+
+  return entries.map((entry, idx) => {
+    const prevEntry = idx > 0 ? entries[idx - 1] : null;
+    const nextEntry = idx < entries.length - 1 ? entries[idx + 1] : null;
+
+    return {
+      params: { slug: entry.id },
+      props: {
+        entry,
+        prev: prevEntry
+          ? { slug: prevEntry.id, title: prevEntry.data.title }
+          : null,
+        next: nextEntry
+          ? { slug: nextEntry.id, title: nextEntry.data.title }
+          : null,
+      },
+    };
+  });
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+---
+
+<EngineeringLayout
+  title={data.title}
+  tagline={data.tagline}
+  year={data.year}
+  institution={data.institution}
+  publication={data.publication}
+  tech={data.tech}
+  hero={data.hero}
+  prev={prev}
+  next={next}
+>
+  <Content />
+</EngineeringLayout>

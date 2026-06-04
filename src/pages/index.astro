@@ -3,8 +3,10 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import WorkCard from '../components/WorkCard.astro';
+import EngineeringCard from '../components/EngineeringCard.astro';
 
 const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const engineering = (await getCollection('engineering')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
@@ -28,6 +30,28 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
             heroPlaceholder={entry.data.heroPlaceholder}
             liveUrl={entry.data.liveUrl}
             index={idx + 1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="engineering" class="border-t border-hairline">
+    <div class="max-w-[80rem] mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-32">
+      <div class="mb-16 md:mb-24">
+        <p class="eyebrow mb-4">Engineering Background</p>
+        <h2 class="display-2 max-w-[24ch]">Earlier mechanical, MEMS, and energy work.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        {engineering.map((entry) => (
+          <EngineeringCard
+            href={`/engineering/${entry.id}`}
+            title={entry.data.title}
+            year={entry.data.year}
+            summary={entry.data.summary}
+            tags={entry.data.tech}
+            image={entry.data.hero}
           />
         ))}
       </div>

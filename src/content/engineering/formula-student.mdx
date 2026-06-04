@@ -1,0 +1,99 @@
+---
+title: "Formula Student — Team Phoenix Racing"
+tagline: "Electric + combustion FSAE race cars"
+year: "2021–2023"
+institution: "SVNIT"
+tech:
+  - "ANSYS Fluent CFD"
+  - "MATLAB / Simulink"
+  - "CAN bus"
+  - "Custom BMS + VCU"
+  - "EV + IC"
+hero: "../../assets/engineering/fsae/combustion/vehicle.jpg"
+summary: "Designed, built, and competed with Formula SAE race cars across both electric and combustion classes over two seasons, owning powertrain end-to-end from selection and integration through dyno and on-track validation."
+order: 2
+---
+
+import ImageFigure from '../../components/ImageFigure.astro';
+import motor from '../../assets/engineering/fsae/motor.png';
+import drivetrain from '../../assets/engineering/fsae/drivetrain.png';
+import accumulator from '../../assets/engineering/fsae/accumulator.png';
+import gearRatio from '../../assets/engineering/fsae/gear-ratio.png';
+import thermalComponents from '../../assets/engineering/fsae/thermal-components.png';
+import thermalCfd from '../../assets/engineering/fsae/thermal-cfd.png';
+import electronics from '../../assets/engineering/fsae/electronics.jpg';
+import combEngineSim from '../../assets/engineering/fsae/combustion/engine-sim.png';
+import combPlenumSim from '../../assets/engineering/fsae/combustion/plenum-sim.png';
+import combPlenumFea from '../../assets/engineering/fsae/combustion/plenum-fea.png';
+import combFea from '../../assets/engineering/fsae/combustion/fea.png';
+import combDrivetrainFab from '../../assets/engineering/fsae/combustion/drivetrain-fab.jpg';
+import combChassisFab from '../../assets/engineering/fsae/combustion/chassis-fab.jpg';
+
+Formula Student is an international engineering competition in which university teams design, build, and race formula-style cars across endurance, autocross, acceleration, and skidpad events. Over two seasons with Team Phoenix Racing, the team designed and built competition vehicles across both electric and combustion classes — the powertrain effort spanned motor and engine integration, accumulator design, thermal management, vehicle control, and full on-track validation.
+
+**Electric powertrain — motor and controller.** Selected and calibrated the Agni 119R as the traction motor — delivering 25.6 kW peak with measured efficiency above 93%. Implemented precise torque mapping and optimized gear-reduction ratios for the transmission to land peak torque at lower RPMs, significantly improving longitudinal acceleration.
+
+<ImageFigure src={motor} alt="Agni 119R motor specifications" caption="Agni 119R motor selection and specifications" />
+
+<ImageFigure src={drivetrain} alt="Electric drivetrain layout" caption="Electric drivetrain layout — motor, gear reduction, chain, and differential" />
+
+<ImageFigure src={gearRatio} alt="EV gear ratio analysis" caption="Gear-ratio optimization for acceleration and endurance trade-offs" />
+
+**Battery pack design.** Designed a custom 158.4V Li-ion accumulator — 44S10P with ~5.2 kWh total capacity and 400A peak current — integrated with a custom Battery Management System for real-time cell voltage and temperature monitoring. Ran extensive simulations in MATLAB and Simulink to optimize power draw, extend pack life, and hit the endurance-event energy budget.
+
+<ImageFigure src={accumulator} alt="Battery accumulator pack design" caption="158.4V Li-ion accumulator pack: 44S10P, ~5.2 kWh, 400A peak" />
+
+**Thermal management.** Designed an air-cooled thermal-management system, with airflow and temperature distribution predicted through ANSYS Fluent CFD simulations. Iterated channel geometry to improve flow rate ~35% over the initial design. Instrumented the pack with 22 NTC thermistors and set a 65°C per-cell emergency-shutdown threshold; maximum operating temperature held at 60°C across endurance events.
+
+<ImageFigure src={thermalComponents} alt="EV thermal management components" caption="Air-cooled thermal-management system components" />
+
+<ImageFigure src={thermalCfd} alt="EV thermal management CFD" caption="ANSYS Fluent CFD: airflow and temperature distribution through the accumulator" />
+
+**Control and electronics integration.** Developed the Vehicle Control Unit (VCU) handling torque distribution, regenerative braking, and efficiency optimization. Integrated a CAN bus across BMS, motor controller, and sensor nodes to create a responsive powertrain control ecosystem. Designed custom PCBs for sensor integration and signal conditioning, with isolation monitoring, an emergency-shutdown circuit, and a comprehensive data-acquisition path for live performance monitoring.
+
+<ImageFigure src={electronics} alt="Electric powertrain electronics" caption="VCU, BMS, and sensor harness integration" />
+
+## Combustion powertrain
+
+The combustion build targeted peak mechanical efficiency — superior performance through optimized engine and drivetrain integration, with intake / exhaust system designs tuned for torque delivery within FSAE rules, plus effective cooling and fuel management. Owned the full chapter: engine selection, transmission, intake / exhaust, structural analysis, fabrication, and on-track validation.
+
+**Engine selection and optimization.** Selected and optimized the KTM Duke 390 — a lightweight, high-performance single-cylinder engine at 373.2 cc, delivering 43 HP at 9000 RPM and 35 Nm at 7000 RPM. Conducted dyno runs to dial in power output, torque curve, and fuel efficiency, then modified the engine to optimize performance within Formula Student regulations through intake and exhaust system design.
+
+**Transmission system.** Engineered a custom drivetrain with optimized gear ratios tuned for rapid acceleration and balanced top speed. Implemented a 6-speed sequential transmission with a custom final-drive ratio of 13:45 to land in the right window across acceleration and endurance events.
+
+**Intake system.** Designed and manufactured a bespoke air-intake manifold with a venturi restrictor — 20 mm per FSAE rules — and a 2.5 L plenum sized for optimal air distribution across the rev band. Ran CFD simulations to validate flow characteristics and tune the geometry for volumetric efficiency.
+
+<ImageFigure src={combEngineSim} alt="Engine simulation model" caption="Engine simulation model — torque and flow characterization" />
+
+<ImageFigure src={combPlenumSim} alt="Plenum selection engine simulation output" caption="Plenum selection — engine-simulation output across configurations" />
+
+**Exhaust system.** Designed a 4-2-1 header for optimal scavenging, with a 650 mm primary pipe length tuned for torque at 7000 RPM. Stainless-steel construction with minimal bends preserved flow quality across the rev range.
+
+**Structural and FEA analysis.** Conducted Finite Element Analysis in ANSYS Mechanical on the critical mechanical structures and mounting points — ensuring robustness without weight penalty. Optimized engine mounting and drivetrain components for rigidity and weight, achieving a 15% weight reduction in drivetrain components versus the previous generation.
+
+<ImageFigure src={combPlenumFea} alt="Structural analysis of plenum" caption="Structural FEA of the intake plenum — stress and deformation under operating loads" />
+
+<ImageFigure src={combFea} alt="FEA simulation of drivetrain components" caption="FEA of drivetrain components — stress concentration mapping for weight-optimized design" />
+
+**Material selection.** Selected high-strength, lightweight materials for critical components and used composites where the strength-to-weight trade-off warranted. Every material decision balanced cost, manufacturability, and performance against the FSAE-event load case.
+
+**Fabrication.** Led the fabrication effort end-to-end — precision manufacturing on critical drivetrain components, CNC machining and laser cutting for custom parts, and bespoke jigs and fixtures to keep assembly tolerances consistent. Implemented inspection and documentation gates through the build to lock in repeatable quality.
+
+<ImageFigure src={combDrivetrainFab} alt="Drivetrain assembly during fabrication" caption="Drivetrain assembly — fabrication and integration" />
+
+<ImageFigure src={combChassisFab} alt="Vehicle frame and chassis fabrication" caption="Chassis fabrication — frame welding and integration of mechanical systems" />
+
+**Combustion results.** Validated through extensive dyno and track testing — documenting power curves, torque delivery, fuel efficiency, and structural reliability. Improved throttle response, torque distribution, and engine performance through the intake / exhaust redesign. Vehicle metrics:
+
+- 0–100 km/h: 4.8 seconds
+- Maximum lateral acceleration: 1.8 g
+- Skidpad time: 5.2 seconds
+- Endurance reliability: 100% completion rate
+
+## Testing and validation
+
+Led extensive dyno testing and track validation across both vehicles — measuring power delivery, thermal behavior, 0–100 km/h acceleration, and endurance efficiency. Iteratively refined the design from test data: the EV recorded an average longitudinal acceleration of 6.06 m/s² and battery consumption of ~860 kJ per lap, well past the initial efficiency targets. Both cars passed Formula Student safety and technical inspections.
+
+## Outcome
+
+Two competition seasons, both vehicles validated and run. The work spanned mechanical design, embedded electronics, simulation, and high-pressure team execution — a complete vehicle-level powertrain effort from sourcing to on-track performance.

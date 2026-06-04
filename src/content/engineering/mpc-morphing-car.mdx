@@ -1,0 +1,56 @@
+---
+title: "Autonomous Morphable Robot Car"
+tagline: "Terrain-adaptive 1/10-scale platform"
+year: "2024–2025"
+institution: "MPC Lab, UC Berkeley (Prof. Francesco Borrelli)"
+tech:
+  - "Model Predictive Control"
+  - "MATLAB / Simulink"
+  - "Python"
+  - "BLDC motors"
+  - "3D-printed structure"
+  - "Motion-capture validation"
+hero: "../../assets/engineering/mpc/cad.jpg"
+summary: "A 1/10-scale autonomous, morphable robot car that dynamically adjusts wheelbase, track width, and ground clearance to adapt to changing terrain. Built at UC Berkeley's MPC Lab with gooseneck linkages at each wheel, autonomous kinematic recalibration, and MPC-based motion control — validated through Simulink simulation and on-vehicle motion-capture testing."
+order: 1
+---
+
+import ImageFigure from '../../components/ImageFigure.astro';
+import motorChar from '../../assets/engineering/mpc/motor-char.png';
+import bldc from '../../assets/engineering/mpc/bldc.png';
+import trajectory from '../../assets/engineering/mpc/trajectory.png';
+import rotation from '../../assets/engineering/mpc/rotation.png';
+
+A 1/10-scale autonomous, morphable robotic vehicle designed at the Model Predictive Control (MPC) Lab at UC Berkeley. The car dynamically adjusts its wheelbase, track width, and ground clearance to adapt to changing terrain — built around real-time adaptability, autonomous recalibration, and MPC-based motion planning. Traditional autonomous vehicles struggle with variable terrain because the chassis is fixed; this platform introduces a morphable mechanical structure that lets the vehicle reconfigure itself in response to terrain conditions, mission requirements, and environmental constraints.
+
+## Key features and innovations
+
+**Morphable chassis design.** Gooseneck linkages at all four wheels allow independent control over track width and wheelbase. The car can transition between narrow, confined geometries for tight maneuvering and wider, lower stances for high-speed stability over rough terrain.
+
+**Autonomous recalibration.** A real-time recalibration algorithm updates the vehicle's kinematic model whenever it morphs — so the controller always reflects the current wheelbase and track-width. This removes the need for manual input or additional sensing each time the geometry changes, which is critical for in-field autonomy.
+
+**Optimized motion control.** Motion planning and trajectory tracking are driven by Model Predictive Control. Each wheel is powered independently by its own motor, giving precise torque distribution and per-wheel speed control. Motor characterization shows close correlation between simulated and measured response, validating the control-system design.
+
+<ImageFigure src={motorChar} alt="Motor velocity response characterization" caption="Motor characterization — simulated vs. measured velocity response" />
+
+<ImageFigure src={bldc} alt="BLDC motor speed control in Simulink" caption="BLDC motor speed-control system in MATLAB / Simulink" />
+
+**Simulation and field testing.** Built extensive simulation models for kinematics and dynamic response across different terrains. Real-world field testing was conducted on the vehicle using its onboard motion-capture system to validate the controller behaviors and trajectory tracking.
+
+<ImageFigure src={trajectory} alt="Vehicle position trajectory in simulation" caption="Vehicle position trajectory — simulated trajectory tracking" />
+
+<ImageFigure src={rotation} alt="Vehicle rotational speed analysis" caption="Rotational-speed analysis across morphing configurations" />
+
+## Technical approach
+
+**Design and manufacturing.** Structure built from 3D-printed components to keep weight low while staying durable, with high-strength carbon-fiber reinforcements in load-bearing regions for structural rigidity without bulk.
+
+**Software and control.** A custom MATLAB / Simulink model handles BLDC motor speed control and overall vehicle-dynamics simulation. Python-based recalibration scripts manage morphing dynamics and propagate the updated kinematic model to the motion controller.
+
+**Testing and validation.** Real-world testing uses motion-capture cameras to fine-tune control algorithms across morphing configurations. Obstacle-navigation trials validate that the vehicle can autonomously reconfigure itself and continue tracking under terrain changes.
+
+## Why this matters
+
+The platform is targeted at search-and-rescue, military reconnaissance, and off-road autonomy — applications where the operating surface is unknown, changes mid-mission, or constrains the vehicle envelope. By letting the chassis itself adapt in real time, the system raises the ceiling on mobility, efficiency, and overall autonomy in unstructured environments. The 1/10-scale platform is a prototype for future full-scale autonomous systems where morphable mechanics could let a single vehicle cover the role that today requires multiple fixed platforms.
+
+Future iterations will integrate machine-learning-based terrain classification and adaptive suspension to broaden the operating envelope further.

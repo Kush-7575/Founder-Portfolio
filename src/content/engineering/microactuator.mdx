@@ -1,0 +1,84 @@
+---
+title: "Bi-Directional Electrothermal Microactuator"
+tagline: "MEMS research — tapered Z-shape design"
+year: "2024–2025"
+institution: "UC Berkeley · ME 219"
+tech:
+  - "PolyMUMPs"
+  - "ANSYS Thermal"
+  - "MATLAB"
+  - "Polysilicon"
+  - "Microfabrication"
+hero: "../../assets/engineering/microactuator.png"
+summary: "MEMS research on a bi-directional electrothermal microactuator with tapered Z-shaped beams, fabricated using the PolyMUMPs polysilicon surface-micromachining process. Tapering optimization improved vertical shuttle displacement ~50% versus equivalent V-shape actuators."
+order: 3
+---
+
+import ImageFigure from '../../components/ImageFigure.astro';
+import zShape from '../../assets/engineering/microactuator/z-shape.png';
+import fbd from '../../assets/engineering/microactuator/fbd.png';
+import tempDist from '../../assets/engineering/microactuator/temp-distribution.png';
+import heatFlux from '../../assets/engineering/microactuator/heat-flux.png';
+import displacement from '../../assets/engineering/microactuator/displacement.png';
+
+A thermo-force-driven, bi-directional electrothermal actuator with tapered Z-shaped beams, designed and simulated for fabrication via the PolyMUMPs (Polysilicon Multi-User MEMS Process) three-layer surface-micromachining flow. The research introduced a tapering optimization to improve vertical shuttle displacement; electrothermal simulations were conducted in ANSYS and validated through analytical structural calculations in MATLAB.
+
+<ImageFigure src={zShape} alt="Proposed Z-shaped actuator design" caption="Proposed Z-shaped actuator design with tapered beams" />
+
+**Design approach.** The actuator uses Z-shaped actuation beams clamped between bonding-pad anchors that also act as electrical contacts. When current passes through the beams, Joule heating drives thermal expansion. The Z-geometry converts in-plane expansion into vertical mechanical motion of a rigid shuttle. Unlike traditional V-shape actuators, the Z-shape avoids buckling failure modes and supports bi-directional operation.
+
+Key dimensions:
+
+- Anchors: 20 × 20 μm
+- Shuttle: 200 × 30 μm
+- Longer beam arm: 400 × 10 μm
+- Short arm: 200 × 10 μm
+- Z-shape transition region: 30 × 10 μm
+
+<ImageFigure src={fbd} alt="Free body diagram of Z-shaped beam" caption="Free body diagram — beam expansion forces translating to vertical shuttle motion" />
+
+**Tapering innovation.** Beams were tapered from anchors toward the shuttle to improve thermal distribution and heat flux. Four tapered-width cases were studied: 10 μm, 9 μm, 8 μm, and 7 μm. Gradual tapering ensures more uniform temperature distribution across the beam, raising the effective expansion and resulting shuttle displacement.
+
+**Simulation methodology.** Electrothermal simulations were carried out using ANSYS Steady-State Thermal with:
+
+- Internal heat generation from upper beams driven by ~10 mA current
+- Convective boundary conditions on surfaces exposed to air
+- Anchors maintained at room temperature
+- Steady-state initial conditions
+
+Material properties (polysilicon):
+
+- Thermal conductivity: 34 W/m·K
+- Specific heat: 678 J/kg·K
+- Density: 2320 kg/m³
+- Thermal expansion coefficient: 2.6 × 10⁻⁶ /K
+
+<ImageFigure src={tempDist} alt="Temperature distribution simulation" caption="ANSYS steady-state thermal — temperature distribution across the tapered beams" />
+
+<ImageFigure src={heatFlux} alt="Heat flux simulation" caption="Heat-flux distribution — uniformity improves with tapering" />
+
+**Performance results.** Across the four tapered cases, vertical shuttle displacement scaled with tapering:
+
+- 10 μm width: 10.49 μm displacement
+- 9 μm width: 11.37 μm displacement
+- 8 μm width: 12.22 μm displacement
+- 7 μm width: 13.03 μm displacement
+
+Compared to equivalent V-shape micro actuators, the untapered Z-shape already delivered ~50% better displacement; gradual tapering further improved thermal distribution, heat flux, and effective shuttle travel.
+
+<ImageFigure src={displacement} alt="Shuttle displacement comparison" caption="Shuttle displacement comparison across tapered beam widths" />
+
+**Fabrication.** Designed for the PolyMUMPs three-layer polysilicon surface-micromachining flow:
+
+1. Substrate preparation on a 1 mm silicon wafer
+2. 2 μm polysilicon deposited via CVD
+3. Photolithography to define the Z-shape beam pattern
+4. Polysilicon etch to form beams
+5. Sacrificial layer deposition (support during fab)
+6. Sacrificial-layer etch to release suspended beams + shuttle
+7. Metal deposition for anchor electrical contacts
+8. Final etch to allow free beam motion
+
+Fabrication challenges include maintaining precise tapered-beam dimensions, ensuring proper release of the suspended structures, preventing stiction during release, and creating reliable electrical connections at the anchors.
+
+**Applications.** Bi-directional motion opens applications across precision positioning for optical components, micromanipulation tools for biomedical use, RF MEMS switches with improved reliability, and micro-robotics / autonomous microsystems.
