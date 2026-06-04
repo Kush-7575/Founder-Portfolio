@@ -1,5 +1,5 @@
 export const CONTACT = {
-  email: 'kush@fable.engineering',
+  email: 'kushdasadia@gmail.com',
   linkedin: 'https://www.linkedin.com/in/kush-dasadia',
   twitter: 'https://x.com/Kush_Dasadia',
 };
