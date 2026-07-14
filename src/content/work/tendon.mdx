@@ -1,0 +1,28 @@
+---
+title: "Tendon"
+tagline: "Force-feedback exoskeleton glove"
+year: "2026"
+status: "In progress"
+role:
+  - "Mechanical design"
+  - "Linkage synthesis"
+  - "Prototyping"
+hero: "../../assets/work/tendon-hero.webp"
+order: -1
+---
+
+import ImageFigure from '../../components/ImageFigure.astro';
+import tendonDetail from '../../assets/work/tendon-detail.webp';
+import tendonLinkage from '../../assets/work/tendon-linkage.webp';
+
+A wearable force-feedback exoskeleton glove for dexterous teleoperation and manipulation data collection. Each finger is driven by a base-mounted servo through a rigid planar linkage that follows the digit through its full range of motion and renders force back to the fingertip, while capturing joint motion for teleoperation. Currently in progress.
+
+**Mechanical design.** Per-finger planar linkages route actuation from servos mounted at the base of the hand out to each digit, keeping the motors and electronics off the fingers and the moving structure light and low-inertia. Compression springs at the joints set the passive return and the feel of the feedback, and the assembly is designed for a largely 3D-printed, low-cost build.
+
+<ImageFigure src={tendonDetail} alt="CAD of the exoskeleton glove mechanism" caption="Servo-driven per-finger linkages with base-mounted actuation" />
+
+**Components.** Each finger pairs a servo for active force feedback with a fingertip linear resonant actuator (LRA) for vibrotactile cues, plus joint-angle sensing for full-hand motion capture across all five digits, so the glove both drives force back to the hand and records the operator's motion for data collection.
+
+**Linkage synthesis.** Link lengths were sized so the mechanism tracks the natural fingertip path across the full curl without binding or passing through a singular configuration. The study below contrasts a properly proportioned linkage against an improper one that folds through itself.
+
+<ImageFigure src={tendonLinkage} alt="Linkage-length design study" caption="Proper vs improper linkage lengths for the finger mechanism" />
