@@ -1,183 +1,168 @@
 % !TEX program = pdflatex
-% Kush Dasadia — Resume
+% Kush Dasadia — Resume (classic academic format)
 % Build:  pdflatex Kush_Dasadia_Resume.tex
 %   or paste into Overleaf (zero install).
 
-\documentclass[10pt,letterpaper]{extarticle}
+\documentclass[letterpaper,10pt]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage[top=0.55in,bottom=0.55in,left=0.6in,right=0.6in]{geometry}
-\usepackage[dvipsnames]{xcolor}
+\usepackage{mathptmx}   % Times-style serif (built-in PostScript fonts)
+\usepackage[top=0.45in,bottom=0.45in,left=0.55in,right=0.55in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{parskip}
-\usepackage{microtype}
 \usepackage{tabularx}
-\linespread{0.95}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
 
-% ---------- Colors ----------
-\definecolor{ink}{HTML}{0A0A0A}
-\definecolor{muted}{HTML}{5A5A5A}
-\definecolor{faint}{HTML}{8A8A8A}
-\definecolor{hairline}{HTML}{C9C9C9}
-\definecolor{accent}{HTML}{B53826}
+\definecolor{linkblue}{HTML}{1A4FBA}
+\hypersetup{urlcolor=linkblue}
 
-\color{ink}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 
 % ---------- Section heads ----------
 \titleformat{\section}
-  {\color{faint}\fontsize{9pt}{11pt}\selectfont\bfseries}
-  {}{0pt}{}
-  [\vspace{2pt}{\color{hairline}\hrule height 0.4pt}\vspace{2pt}]
-\titlespacing*{\section}{0pt}{8pt}{3pt}
+  {\large\bfseries}{}{0em}{}
+  [{\vspace{-3pt}\titlerule[0.9pt]}]
+\titlespacing*{\section}{0pt}{5pt}{5pt}
 
 % ---------- Helpers ----------
-% \role{Title}{Org}{Right text}
-\newcommand{\role}[3]{%
-  \vspace{2pt}%
-  \noindent\begin{tabularx}{\linewidth}{@{}Xr@{}}%
-    \textbf{#1} #2 & {\color{muted}\small #3} \\
-  \end{tabularx}\par\vspace{0pt}%
-}
+% Two-column heading row: left flush, right flush
+\newcommand{\tcol}[2]{\noindent{\fontsize{11.5}{14}\selectfont #1\hfill #2\par}}
+% Italic descriptive line
+\newcommand{\desc}[1]{\noindent\textit{#1}\par}
+% Spacing between entries
+\newcommand{\gap}{\vspace{2pt}}
 
-% \project{Name}{Role/credit}{One-line description}
-\newcommand{\project}[3]{%
-  \vspace{3pt}%
-  \noindent\textbf{#1}\;{\color{muted}\small\;\textperiodcentered\;#2}\\%
-  {\color{muted}#3}\par\vspace{-3pt}%
-}
-
-\setlist[itemize]{leftmargin=14pt,topsep=1pt,itemsep=0pt,parsep=0pt}
+\setlist[itemize]{leftmargin=1.4em,topsep=0pt,itemsep=0pt,parsep=0pt,label=\textbullet}
 
 % ---------- Document ----------
 \begin{document}
 
 % ----- Header -----
-{\fontsize{22pt}{26pt}\selectfont\bfseries Kush Dasadia\par}
-\vspace{1pt}
-{\color{muted}\small
-San Francisco \;\textperiodcentered\;
-\href{mailto:kushdasadia@gmail.com}{kushdasadia@gmail.com} \;\textperiodcentered\;
-\href{https://www.linkedin.com/in/kush-dasadia}{linkedin.com/in/kush-dasadia} \;\textperiodcentered\;
-\href{https://x.com/Kush_Dasadia}{x.com/Kush\_Dasadia} \;\textperiodcentered\;
-\href{https://fable.engineering}{fable.engineering}
-}
-
-\vspace{8pt}
-{\fontsize{11pt}{15pt}\selectfont
-Product builder at the intersection of AI and physical products.}
+\begin{center}{\huge\bfseries Kush Dasadia}\end{center}
+\vspace{-2pt}
+{\small
+\href{https://www.linkedin.com/in/kush-dasadia}{linkedin.com/in/kush-dasadia}\hfill
+\href{https://x.com/Kush_Dasadia}{x.com/Kush\_Dasadia}\hfill
+kushdasadia@gmail.com\hfill
++1 510-926-8984}
 
 % ----- Education -----
 \section{EDUCATION}
 
-\role{University of California, Berkeley}{\;\textperiodcentered\; M.Eng, Mechanical Engineering}{Aug 2024 -- May 2025}
-\vspace{-3pt}
-{\color{muted}Concentration: Controls of Robotics \& Autonomous Systems.}
+\tcol{\textbf{\textit{University of California, Berkeley}}}{Berkeley, CA}
+\begin{itemize}
+  \item Master of Engineering, Mechanical Engineering \hfill Aug 2024 -- May 2025
+  \item \textit{Concentration:} Controls of Robotics \& Autonomous Systems
+\end{itemize}
+\tcol{\textbf{\textit{Sardar Vallabhbhai National Institute of Technology (SVNIT)}}}{Surat, India}
+\begin{itemize}
+  \item Bachelor of Technology, Mechanical Engineering \hfill Jul 2019 -- Jun 2023
+\end{itemize}
 
-\role{Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat}{\;\textperiodcentered\; \mbox{B.Tech, Mechanical Engineering}}{Jul 2019 -- Jun 2023}
+% ----- Skills -----
+\section{SKILLS}
+\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{1.55in}X@{}}
+Mechanical Design & CAD and solid modeling (SolidWorks, Fusion 360, CATIA); industrial design, GD\&T and tolerance stack-up, machine and mechanism design, enclosure and electronic packaging; FEA and CFD (ANSYS Mechanical / Fluent). \\[3pt]
+Manufacturing & Design for manufacturing and assembly (DFM / DFA), CNC machining, 3D printing (FDM and metal DMLS), grade-5 titanium and precision parts, jigs and fixtures, prototype-to-mass-production, OEM / ODM sourcing (Shenzhen, China, CES). \\[3pt]
+Robotics \& Controls & Whole-body control, Model Predictive Control, vehicle dynamics, actuator and sensor integration, MuJoCo simulation. \\[3pt]
+Electronics \& Firmware & PCB and sensor integration, Arduino, Raspberry Pi, BLE, audio and capacitive touch, battery-management systems, CAN bus, firmware bring-up and power management. \\[3pt]
+AI \& Software & Python, LLM / VLM / VLA models, agentic systems (planner / executor, RAG), reinforcement learning, MATLAB / Simulink, iOS and backend (transcription, retrieval, async LLM). \\[3pt]
+Operations & Fundraising, vendor and partner management, cross-functional leadership, user research, go-to-market. \\
+\end{tabularx}
 
 % ----- Experience -----
-\section{EXPERIENCE}
+\section{WORK EXPERIENCE}
 
-\role{Founder}{\;\textperiodcentered\; Fable Engineering}{Apr 2025 -- present \;\textperiodcentered\; San Francisco}
-\vspace{-3pt}
-{\color{muted}Operating company for hardware-first, AI-native product ventures. Pre-seed from The House Fund. Built and shipped five product lines across smart wearables, social robotics, kids' companions, and AI workflows (see Projects).}
+\tcol{\textbf{\textit{Founder \& CTO,}} \textit{Fable Engineering}}{\textit{San Francisco, CA | Apr 2025 -- Present}}
+\desc{Hardware-first, AI-native product company that began as a companion-robotics venture and now builds AI-native hardware and creative tools.}
 \begin{itemize}
-  \item \textbf{Hardware:} industrial design, 3D-printed prototype iteration loops, ODM sourcing at CES and in China, partnerships with European industrial design studios.
-  \item \textbf{AI agent infrastructure:} voice + vision agent harnesses, planner / executor patterns, retrieval over personal context, structured eval harnesses, on-device vs.\ cloud split.
-  \item \textbf{User research at scale:} 500+ interviews across creative professionals, students, robot-vacuum owners, and parents; synthesized findings into go / kill product decisions.
-  \item \textbf{GTM:} LinkedIn beta launches, Reddit community building, 200+ outbound contacts, parallel customer discovery across multiple ICPs.
-  \item \textbf{Fundraising:} closed Fable Engineering's pre-seed round (The House Fund); previously raised \$250K pre-seed for Companion Robots on the strength of a working droid prototype.
+  \item Raised the company's pre-seed round (The House Fund); built and shipped a progression of products as it evolved: bipedal robotic characters, desktop companion robots, AI voice wearable devices, and AI creative tools for hardware companies (see Projects).
+  \item Designed retrofit hardware for off-the-shelf humanoid robots (cooling mounts, camera mounts, and robotic-arm integrations) and selected the hardware to scale a teleoperation data-collection factory, working hands-on with Unitree G1, Fourier GR-1, and AgiBot platforms.
+  \item Owned the full technical stack end to end, from industrial and mechanical design through electronics and firmware bring-up to the AI and agent software, taking products from concept to manufactured, shipped units.
 \end{itemize}
 
-\role{Robotics Engineer}{\;\textperiodcentered\; MPC Lab, UC Berkeley (Prof. Francesco Borrelli)}{Aug 2024 -- May 2025 \;\textperiodcentered\; Berkeley, CA}
-\vspace{-3pt}
+\gap
+\tcol{\textbf{\textit{Robotics Engineer,}} \textit{MPC Lab, UC Berkeley (Prof. Francesco Borrelli)}}{\textit{Berkeley, CA | Aug 2024 -- May 2025}}
 \begin{itemize}
-  \item Designed modular in-field morphing solutions for a 1/10-scale autonomous vehicle (US Navy capstone) using goosenecks to enhance performance in dynamic environments.
-  \item Collaborated on control challenges and rapid design modifications across vehicle dynamics, materials engineering, 3D printing, and control theory.
+  \item Designed and built a 1/10-scale prototype of an autonomous morphing vehicle for lab research (US Navy capstone), with gooseneck linkages at all four wheels that vary wheelbase, track width, and ground clearance in real time for terrain adaptability.
+  \item Wrote an autonomous recalibration routine that updates the kinematic model as the vehicle morphs, keeping Model Predictive Control trajectory tracking accurate while each wheel is driven independently for torque and speed control.
+  \item Modeled vehicle and motor dynamics in MATLAB / Simulink, fabricated a lightweight 3D-printed carbon-fiber-reinforced chassis, and validated on track with motion-capture and obstacle trials.
 \end{itemize}
 
-\role{Sr. Drilling Officer (Company Man)}{\;\textperiodcentered\; Sun Petrochemicals, India}{Jul 2023 -- Jun 2024 \;\textperiodcentered\; India}
-\vspace{-3pt}
+\gap
+\tcol{\textbf{\textit{Sr. Drilling Officer (Company Man),}} \textit{Sun Petrochemicals}}{\textit{India | Jul 2023 -- Jun 2024}}
 \begin{itemize}
-  \item Managed a 100+ engineer team across drilling, mud, cementing, and HSE functions on both onshore and offshore rigs (well depths 4,000--4,300 ft); owned end-to-end drilling projects from planning and equipment selection to fluid management, casing, and cementing operations.
-  \item Coordinated rig contractors, mud engineers, cementing crews, vendors, and HSE leads; ran daily safety, performance, and cost reporting; held vendor selection, procurement, and budget accountability for active well programs.
+  \item Served as the operating company's senior on-site representative with single-point authority for round-the-clock operations across onshore and offshore rigs, making real-time technical and operational decisions to keep the program on schedule and within budget.
+  \item Led a 100+ person, multi-vendor operation spanning rig crews, mud, cementing, logistics, and HSE teams from independent contractors, aligning them to a single execution plan under high-pressure, time-critical conditions.
+  \item Oversaw selection, inspection, and integrity of critical rig machinery and mechanical systems (hoisting, circulation, and pressure-control equipment), directing rapid troubleshooting and failure recovery to minimize downtime.
+  \item Owned vendor selection, procurement, and budget accountability; ran daily performance and cost reporting to the head office, drove down non-productive time, and enforced site-wide HSE standards as the ultimate on-site safety authority.
 \end{itemize}
 
-\role{Research Intern}{\;\textperiodcentered\; Institute of Automotive Technology, TU Munich}{Feb 2022 -- Aug 2022 \;\textperiodcentered\; Remote}
-\vspace{-3pt}
+\gap
+\tcol{\textbf{\textit{Research Intern,}} \textit{Institute of Automotive Technology, TU Munich}}{\textit{Remote | Feb 2022 -- Aug 2022}}
 \begin{itemize}
   \item Conceptualized an automated charging system for battery-electric trucks; designed for compatibility, efficiency, and user-friendliness across multiple OEM platforms.
   \item Analyzed the heavy-duty EV charging landscape: emerging standards (CCS, MCS), depot vs en-route topologies, and integration trade-offs with grid and fleet operations.
 \end{itemize}
 
+\gap
+\tcol{\textbf{\textit{Chief Powertrain Engineer,}} \textit{Formula Student, SVNIT}}{\textit{Surat, India | 2021 -- 2023}}
+\begin{itemize}
+  \item Led the powertrain team across two seasons, taking both a combustion and an electric Formula Student car from design and CFD / FEA simulation through fabrication to on-track competition; designed, simulated, and manufactured the chain-and-sprocket drivetrain (a fixed gear ratio in both cars), from sprocket-ratio sizing to machined parts.
+  \item On the combustion car, integrated a 373 cc single-cylinder engine and designed a rules-compliant restricted intake (20 mm restrictor, 2.5 L plenum) with a CFD-tuned 4-2-1 stainless-steel exhaust to shape the torque curve; ran ANSYS FEA on mounts and drivetrain to cut component weight by roughly 15\%, and the car completed 100\% of the endurance event.
+  \item On the electric car, built a custom 158 V lithium-ion accumulator with an onboard battery-management system for cell-level voltage and temperature monitoring, powering a 25 kW motor at over 93\% efficiency, with a CAN-bus vehicle control unit handling torque delivery and regenerative braking and a CFD-designed air-cooling system; the car recorded 6.06 m/s\textsuperscript{2} average longitudinal acceleration.
+\end{itemize}
+
 % ----- Projects -----
 \section{PROJECTS}
 \vspace{2pt}
-{\color{muted}\small Selected ventures built at Fable Engineering. Each is a distinct product line with its own thesis, prototype, and outcomes.}
 
-\project{Super8}{Fable Engineering \;\textperiodcentered\; Product, Engineering, GTM \;\textperiodcentered\; \href{https://super8.so/landing}{super8.so}}{AI product visualization with 250+ users and generating revenue. Infinite-canvas, node-based agent that compiles natural-language intent into CAD / Blender / image-gen workflows.}
+\tcol{\textbf{Long-Horizon Robot Mission Controller}}{Independent Research \textperiodcentered\ 2026}
+\desc{Reinforcement learning, robot autonomy, LLM agents. Trained a compact language model to plan and reliably execute long, multi-step robot missions, then deployed it on a simulated humanoid.}
 \begin{itemize}
-  \item Designed the node-based canvas interface and the planner / executor agent; structured eval harness on fal.ai serverless infra (cold starts, shared pools, async submit-and-poll).
-  \item Ran GTM across a LinkedIn beta launch, Reddit communities, and a 200-person outbound list; parallel customer discovery across growth marketers and industrial designers.
+  \item Built a simulated apartment where a language-model controller plans and carries out long fetch-and-deliver missions (up to 16 steps), with realistic skill failures: grasps slip and carried objects occasionally drop mid-route with no warning.
+  \item Trained the controller end-to-end with reinforcement learning against a mission-success reward (custom training loop, no external RL framework); success on the longest missions rose from roughly 2\% with prompting and 54\% with imitation learning to 96\%, as the policy learned to detect and recover from its own failures.
+  \item Deployed the trained controller on a simulated Unitree G1 humanoid in MuJoCo, driving whole-body walking and two-handed box handling through a full three-package delivery, including live recovery from a dropped parcel.
 \end{itemize}
 
-\project{Murmur}{Fable Engineering \;\textperiodcentered\; Full-stack hardware + software, User research}{Voice-enabled smart ring + AR-glasses bundle for ambient capture and contextual surfacing.}
+\gap
+\tcol{\textbf{Murmur: AI voice wearable device}}{Fable Engineering \textperiodcentered\ 2025}
+\desc{Hardware, Firmware, Software, Manufacturing. Built a voice-first smart ring from concept to a manufactured, shipped consumer product, paired with a companion AI app.}
 \begin{itemize}
-  \item \textbf{Traction:} 1,200+ waitlist; working prototype shipped to soft-launch users; AR-glasses + ring bundle live as Batch 01 reservations.
-  \item \textbf{Hardware:} designed titanium enclosure; ran 3D-printed iteration loops; sourced ODMs at CES and in China; Belgian studio partnership on Gen-2 enclosure.
-  \item \textbf{Project management:} drove timelines from prototyping through pilot runs; aligned mechanical design with firmware bring-up and system integration milestones.
-  \item \textbf{Hands-on builds:} assembled mechanical components, fixtures, and electronic modules across iterations; from 3D-printed prototype through ODM pilot.
-  \item \textbf{Full stack:} ring firmware (BLE, audio, touch, power); backend (transcription, retrieval, async LLM); voice agent (planner / executor); iOS app with integrations across Notion, Calendar, Gmail, Slack, ChatGPT.
+  \item \textbf{Mechanical design:} designed the titanium ring enclosure from scratch, packaging a miniaturized PCB, a curved lithium-polymer battery, a MEMS microphone behind a sealed acoustic port, and capacitive touch into a slim, water-resistant body; added a non-metallic antenna window so the Bluetooth radio transmits through the metal shell, and refined the fit across a full range of finger sizes.
+  \item \textbf{Firmware:} wrote the ring firmware end to end: Bluetooth connectivity, an always-ready low-power audio capture and buffering pipeline, touch-gesture control, battery and charging management, and over-the-air updates, all tuned for multi-day battery life within a coin-sized power budget.
+  \item \textbf{Software:} built the companion software stack, including an iOS app for capture and review, a real-time voice-agent pipeline (transcription, retrieval, and asynchronous language-model calls), and integrations with Notion, Calendar, Gmail, Slack, and ChatGPT.
+  \item \textbf{Manufacturing:} took the product from prototype to mass production, partnering with a Shenzhen OEM, designing for manufacturability, and producing enclosures in CNC-machined and 3D-printed grade-5 titanium; shipped devices to early users and ran a Batch 01 pilot program off a 1,200+ waitlist.
 \end{itemize}
 
-\project{Zero}{Fable Engineering \;\textperiodcentered\; Hardware, Firmware, Industrial design}{Kid's desktop companion robot, built end-to-end in a 72-hour sprint.}
+\gap
+\tcol{\textbf{Zero: A desktop companion robot}}{Fable Engineering \textperiodcentered\ 2025}
+\desc{Hardware, Firmware, Industrial design. A kids' companion, built end-to-end in a 72-hour sprint.}
 \begin{itemize}
   \item Hardware: Raspberry Pi 5 compute; 4.2" E-Ink face; dual speakers, camera, microphone, USB-C battery.
   \item Sprint methodology: Day 0 mood boards \textrightarrow{} Day 1 sketch \textrightarrow{} AI rendering \textrightarrow{} Fusion 360 CAD \textrightarrow{} overnight 3D print \textrightarrow{} Day 2 electronics + firmware bring-up \textrightarrow{} Day 3 vision + conversation integration.
   \item Event-driven Python service stack; lightweight on-device inference + remote LLM / VLM calls with guardrails.
 \end{itemize}
 
-\project{Sonic}{Fable Engineering \;\textperiodcentered\; Hardware, Mechanical design, Robot learning}{Low-cost semi-humanoid robotics platform built for AI / manipulation research and experimentation.}
+\gap
+\tcol{\textbf{Sonic: A low-cost semi-humanoid}}{Fable Engineering \textperiodcentered\ 2025}
+\desc{Hardware, Mechanical design, Robot learning. Built for AI / manipulation research and experimentation.}
 \begin{itemize}
   \item Designed the torso frame and structural assemblies in CAD; 3D-printed parts for rapid iteration cycles.
   \item Selected off-the-shelf actuators across joints to keep BOM low while preserving DOF for manipulation experiments.
   \item Integrated and ran the $\pi_0$ vision-language-action foundation model (Physical Intelligence) on the platform; designed and conducted manipulation and behavior experiments.
-  \item Worked with Unitree G1 humanoid for teleoperation and data collection.
-  \item Implemented whole-body control VR teleop methods such as SONIC and TWIST.
 \end{itemize}
-
-\project{Formula Student (FSAE)}{SVNIT \;\textperiodcentered\; Powertrain Lead, Electric \& Combustion vehicles}{Powertrain mechanical design and integration for Formula SAE race cars across both IC and EV classes.}
-\begin{itemize}
-  \item \textbf{IC powertrain (mechanical):} engine mounting and vibration isolation within the space-frame; intake design (restrictor, plenum, runner length) for target torque curve; exhaust header geometry (4-1 / 4-2-1) with routing and decibel compliance; fuel system layout (tank, lines, rail); cooling system (radiator placement, hose routing, expansion).
-  \item \textbf{EV powertrain (mechanical):} motor mounting and torque-reaction structures; accumulator enclosure design (cell-stack packaging, structural rigidity, crash protection per FSAE EV rules); inverter mounting and cooling jacket; high-voltage cable routing and shielding; BMS packaging and serviceability.
-  \item \textbf{Drivetrain integration:} torque path from engine / motor to wheels; chain-drive geometry, sprocket selection, and tensioning; differential mounting integrated with rear bulkhead; drivetrain packaging within chassis envelope; on-track validation and refinement.
-\end{itemize}
-
-% ----- Skills -----
-\section{SKILLS}
-
-\noindent\begin{tabularx}{\linewidth}{@{}p{1.35in}X@{}}
-\textbf{AI \& agents}    & Voice + vision agents, planner / executor patterns, retrieval over personal context (RAG), foundation models (LLM / VLM / VLA --- $\pi_0$), structured evals, on-device vs.\ cloud split, fal.ai serverless. \\[2pt]
-\textbf{Robotics}        & Humanoid platforms (Unitree G1), VR teleoperation \& data collection, whole-body control (SONIC, TWIST), foundation-model integration on hardware, manipulation \& behavior experiments, vehicle dynamics \& controls. \\[2pt]
-\textbf{Hardware}        & Industrial design, CAD (SolidWorks, Fusion 360, CATIA), 3D printing, rapid prototype iteration loops, titanium enclosures, mechanical packaging (powertrain, accumulator, motor mounts), ODM sourcing (CES, China), Raspberry Pi, sensors. \\[2pt]
-\textbf{Programming}     & Python, MATLAB / Simulink, Arduino, firmware bring-up (BLE, audio, touch), backend (transcription, retrieval, async LLM). \\[2pt]
-\textbf{Operations}      & Vendor \& partner management, user research at scale, GTM (LinkedIn, Reddit, outbound), fundraising (pre-seed), cross-functional leadership. \\
-\end{tabularx}
 
 % ----- Publications & Patent -----
-\enlargethispage{3\baselineskip}
 \section{PUBLICATIONS \& PATENT}
-
 \begin{itemize}
-  \item Dasadia K., Gandhi M., Banerjee J. \emph{Numerical Validation of Power Take-off Damping in an OWC Chamber and Modifications for Increased Efficiency.} Springer Lecture Notes in Mechanical Engineering, 2022.
-  \item Choukse P., Dasadia K., et al. \emph{Pipe Climbing Robot.} India Design Patent 337173001, 2021.
+  \item Dasadia K., Gandhi M., Banerjee J. \textit{Numerical Validation of Power Take-off Damping in an OWC Chamber and Modifications for Increased Efficiency.} Springer Lecture Notes in Mechanical Engineering, 2022.
+  \item Choukse P., Dasadia K., et al. \textit{Pipe Climbing Robot.} India Design Patent 337173001, 2021.
 \end{itemize}
 
 \end{document}
